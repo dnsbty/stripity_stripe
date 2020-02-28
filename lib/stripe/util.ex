@@ -31,7 +31,7 @@ defmodule Stripe.Util do
   def map_keys_to_atoms(m) do
     Enum.into(m, %{}, fn
       {k, v} when is_binary(k) ->
-        a = String.to_atom(k)
+        a = String.to_existing_atom(k)
         {a, v}
 
       entry ->
@@ -47,7 +47,7 @@ defmodule Stripe.Util do
   # Default
   def atomize_keys(not_a_map), do: not_a_map
 
-  def atomize_key(k) when is_binary(k), do: String.to_atom(k)
+  def atomize_key(k) when is_binary(k), do: String.to_existing_atom(k)
   def atomize_key(k), do: k
 
   @spec object_name_to_module(String.t()) :: module

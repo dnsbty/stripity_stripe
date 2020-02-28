@@ -230,5 +230,5 @@ defmodule Stripe.Error do
   defp maybe_put(map, key, value), do: map |> Map.put(key, value)
 
   defp maybe_to_atom(nil), do: nil
-  defp maybe_to_atom(string) when is_binary(string), do: string |> String.to_atom()
+  defp maybe_to_atom(string) when is_binary(string), do: string |> String.to_existing_atom()
 end

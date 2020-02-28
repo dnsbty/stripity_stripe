@@ -137,11 +137,11 @@ defmodule Stripe.Converter do
       map_keys =
         map
         |> Map.keys()
-        |> Enum.map(&String.to_atom/1)
         |> MapSet.new()
 
       struct_keys =
         struct_keys
+        |> Enum.map(&Atom.to_string/1)
         |> MapSet.new()
 
       extra_keys =
